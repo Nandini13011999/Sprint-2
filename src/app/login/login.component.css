@@ -1,0 +1,32 @@
+label{
+    text-align: center;
+    position: inherit;
+    left: 200px;
+    margin-left: 20px;
+   
+}
+input{
+    position: relative;
+    margin-left: 20px;
+    width: 200px;
+  
+}
+button{
+    margin-left: 10px;
+    background-color: darkslategray;
+}
+form{
+   margin-left: 350px;
+   background-color: antiquewhite;
+   width: 400px; 
+   border-width: 8px;
+      margin-top: 60px;
+      border-style: dashed;
+      position: center;margin-bottom: 200px;
+    
+}
+img{
+   max-height: 200px;
+   margin-left: 20px;
+   position: relative;
+}

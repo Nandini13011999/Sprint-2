@@ -1,0 +1,66 @@
+
+<nav class ="navbar navbar-expand-md navbar-light bg-transparent">
+    <ul class="navbar-nav">
+       
+   <!---  <li><a routerLink="/addquestion">Add New Question Here!!</a></li>
+--> 
+     <li><a routerLink="/detail">Question by test Id</a></li>
+
+    </ul>
+</nav>
+
+<table>
+    <thead>
+
+        
+        <td>Question Id</td>
+        <td>Question Title</td>
+       
+        <td>Question Options</td>
+        <td>Question Answer</td>
+        <td>Question Marks</td>
+        <!-- 
+        <td>Answer Choosen</td> -->
+        <td>Marks Scored</td>
+        <td>Remove</td>
+
+</thead>
+<tbody>
+<tr *ngFor="let q of question | async">
+    <!-- 
+        <td>{{q.test_test_id}}</td> -->
+        <td>{{q.questionId}}</td>
+        <td>{{q.questionTitle}}</td>
+
+        <td>{{q.questionOptions | json}}
+
+       <!--   <p *ngFor="let a of answer ">
+                <li>{{a.answerId}}</li>
+                <li>{{a.values}}</li>
+
+            </p>
+             -->  
+        </td>
+
+      <td> {{q.choice}} </td>
+     <td>  {{q.questionMarks}}</td>
+     <!-- 
+     <td>{{q.chosenAnswer}}</td>-->
+   
+    <td>   {{q.marksScored}} </td>
+<td>
+       <button (click)="deleteQuestion(q.questionId)">delete</button></td>
+
+
+    
+<!-- 
+    <td>
+        <button (click)="questionDetail(q.questionId)">Detail</button>
+        </td>
+
+ -->
+    </tr>
+
+</tbody>
+</table>
+<hr>

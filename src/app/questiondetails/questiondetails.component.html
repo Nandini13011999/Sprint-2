@@ -1,0 +1,109 @@
+
+<form>
+<label for="id">EnterTest Id:</label><br>
+<input type="number" name="id" [(ngModel)]="id">
+<button (click)="show()" >show</button><br>
+
+
+
+</form>
+
+  <table>
+    <thead>
+
+        
+        <td>Question Id</td>
+        <td>Question Title</td>
+       
+        <td>Question Options</td>
+        <td>Question Answer</td>
+        <td>Question Marks</td>
+        <!-- 
+        <td>Answer Choosen</td> -->
+        <td>Marks Scored</td>
+        <td>Remove</td>
+        <td>Update</td>
+
+</thead>
+<tbody>
+<tr *ngFor="let q of ques ">
+    <!-- 
+        <td>{{q.test_test_id}}</td> -->
+        <td>{{q.questionId}}</td>
+        <td>{{q.questionTitle}}</td>
+
+        <td>{{q.questionOptions | json}}
+
+       <!--   <p *ngFor="let a of answer ">
+                <li>{{a.answerId}}</li>
+                <li>{{a.values}}</li>
+
+            </p>
+             -->  
+        </td>
+
+      <td> {{q.choice}} </td>
+     <td>  {{q.questionMarks}}</td>
+     <!-- 
+     <td>{{q.chosenAnswer}}</td>-->
+   
+    <td>   {{q.marksScored}} </td>
+     <td>
+ 
+     <button (click)="updateQuestion(id)">Update</button>
+     </td>
+    
+    </tr>
+   <td>
+
+        <button (click)="addquestion(id)">Add</button>
+        </td>
+    </tbody>
+    </table>
+
+<!--  
+<p>questiondetails works!</p>
+<h1>Update Product Details</h1>
+	
+
+<div *ngIf="ques">
+    <div>
+        <label><b>Qusetion id</b></label>{{ques.questionId}}
+    </div>
+
+
+    <div>
+        <label><b>Question Title</b></label>{{ques.questionTitle}}
+    </div>
+
+  
+    <div>
+        <label><b>Question Option1</b></label>{{ques.questionOption1}}
+    </div>
+    <div>
+        <label><b>Question Option2</b></label>{{ques.questionOption2}}
+    </div>
+    <div>
+        <label><b>Question Option3</b></label>{{ques.questionOption3}}
+    </div>
+    <div>
+        <label><b>Question Option4</b></label>{{ques.questionOption4}}
+    </div>
+
+
+    <div>
+        <label><b>Question Marks</b></label>{{ques.questionMarks}}
+    </div>
+
+    <div>
+        <label><b>Question Answer</b></label>{{ques.questionAnswer}}
+    </div>
+
+</div>
+
+<button (click) ="list()">Back to question list</button>
+
+
+
+
+ -->

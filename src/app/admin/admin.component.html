@@ -1,0 +1,32 @@
+
+
+<div class="col-md-8">
+    <table class="table table-striped">
+    <thead>
+
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            
+            <th>Password</th>
+           
+        </tr>
+
+    </thead>
+
+<tbody>
+    <tr *ngFor="let p of admin">
+
+        <td>{{p.adminId}}</td>
+        <td>{{p.adminName}}</td>
+       
+        <td>{{p.adminPassword}}</td>
+
+
+
+    </tr>
+
+</tbody>
+</table>
+
+</div>
