@@ -1,4 +1,4 @@
-package org.com.onlinetest.model;
+package org.com;
 
 import java.math.BigInteger;
 import java.util.List;

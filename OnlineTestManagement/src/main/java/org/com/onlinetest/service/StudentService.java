@@ -1,6 +1,5 @@
 package org.com.onlinetest.service;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +9,6 @@ import javax.validation.Valid;
 import org.com.onlinetest.dao.StudentDao;
 import org.com.onlinetest.dao.TestDao;
 import org.com.onlinetest.exception.RecordNotFoundException;
-import org.com.onlinetest.model.Question;
 import org.com.onlinetest.model.Student;
 import org.com.onlinetest.model.Assessment;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +21,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class StudentService {
 	@Autowired
 	private StudentDao stdDao;
-	
+	@Autowired
+	private TestDao testdao;
 	
 
 //add student
 	public Student addStudent(Student std)
 	   {
-		  
-		   return  stdDao.save(std);
-		   
+		   return  stdDao.save(std);		   
 	   }
 	 
 	 
@@ -67,12 +64,12 @@ public class StudentService {
 				return "!!   Id Is Invalid   !!";
 			}
 	    }
+	 
 //get All student
 	 public List<Student> getAllStudent(BigInteger stdId){
 	    	
 		    System.out.println("All Students are:");
-	    	return stdDao.findAll();
-	    	
+	    	return stdDao.findAll();   	
 	    }
 
 // get student By Id
@@ -82,8 +79,6 @@ public class StudentService {
 	    	return ResponseEntity.ok().body(stdStudent);
 	    }
 	 
-	 
-
 	 
 	//login
 	 public BigInteger checkLogin(String loginName,String password) {
@@ -95,7 +90,22 @@ public class StudentService {
 		 else return null;
 	 }
 	 
-    
-	 
+    //AssignTest
+	 public String assignTest(BigInteger studentId,BigInteger testId)
+		{
+			Optional<Student>findById=stdDao.findById(studentId);
+			Optional<Assessment>test=testdao.findById(testId);
+			if(findById.isPresent()&& test.isPresent())
+			{
+				Student student=findById.get();
+				student.setTestId(testId);
+				stdDao.save(student);
+				return "Test Assigned";
+				
+			}
+			return "User or Test does not exist";
+			
+		}
+
 
 }

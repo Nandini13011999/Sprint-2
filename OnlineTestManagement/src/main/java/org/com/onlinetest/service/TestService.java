@@ -4,14 +4,10 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Optional;
-
 import javax.validation.Valid;
-
-import org.com.onlinetest.dao.StudentDao;
 import org.com.onlinetest.dao.TestDao;
 import org.com.onlinetest.exception.RecordNotFoundException;
 import org.com.onlinetest.model.Assessment;
-import org.com.onlinetest.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,11 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class TestService {
+	
 	@Autowired
 	private TestDao testdao;
-	@Autowired
-	private StudentDao studentdao;
-	
 	
 
 //add Test	
@@ -51,8 +45,8 @@ public class TestService {
 			catch(RecordNotFoundException e) {
 			return new ResponseEntity(e.getMessage(),HttpStatus.NOT_FOUND);
 			
-		}
 			}
+		}
 		
 	 
 //Delete test	  
@@ -80,9 +74,8 @@ public class TestService {
 	    }
 	 
 	 
-	 //total test
-	
-	 public BigDecimal calculateTotalMarks(BigInteger testId) throws RecordNotFoundException{
+	 //calculate Marks
+	public BigDecimal calculateTotalMarks(BigInteger testId) throws RecordNotFoundException{
 		 testdao.findById(testId).
     	 orElseThrow(() -> new RecordNotFoundException("Test not found for the given id" +testId));
     	QuestionService service=new QuestionService();
@@ -91,23 +84,5 @@ public class TestService {
     	test.setTestMarksScored(BigDecimal.valueOf(service.calculateQuestionMarks(testId)));
    
            return test.getTestMarksScored();
-    
 	 }
-	 
-	 public String assignTest(BigInteger studentId,BigInteger testId)
-		{
-			Optional<Student>findById=studentdao.findById(studentId);
-			Optional<Assessment>test=testdao.findById(testId);
-			if(findById.isPresent()&& test.isPresent())
-			{
-				Student student=findById.get();
-				student.setTestId(testId);
-				studentdao.save(student);
-				return "Test Assigned";
-				
-			}
-			return "User or Test does not exist";
-			
-		}
-
 }

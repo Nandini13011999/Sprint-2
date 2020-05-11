@@ -3,13 +3,12 @@ package org.com.onlinetest.controller;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
-import java.util.Set;
 
-import org.com.onlinetest.dao.TestDao;
 import org.com.onlinetest.exception.RecordNotFoundException;
-import org.com.onlinetest.model.Question;
 import org.com.onlinetest.model.Assessment;
+import org.com.onlinetest.model.Question;
 import org.com.onlinetest.service.QuestionService;
+import org.com.onlinetest.service.StudentService;
 import org.com.onlinetest.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -32,10 +31,10 @@ public class TestController {
 	private TestService testservice;
 	@Autowired
 	private QuestionService questionservice;
-	
 	@Autowired
-	private TestDao testdao;
-
+	private StudentService studentservice;
+	
+	
 	// add new test
 	@PostMapping("/addTest")
 	public Assessment addTest(@RequestBody Assessment test) {
@@ -113,7 +112,7 @@ public class TestController {
 	}
 
 
-	// calculate total marks
+	// calculate marks
 	@GetMapping("/getMarks")
 	public BigDecimal calculateTotalMarks(/* @PathVariable(value="id") */BigInteger testId)
 			throws RecordNotFoundException {
@@ -121,10 +120,10 @@ public class TestController {
 	}
 	
 	//assign test to student
-	@PutMapping("/assignTest/{userId}/{testId}")
+	@PutMapping("/assignTest/{studentId}/{testId}")
 	public String assignTest(@PathVariable(value="studentId")BigInteger studentId,
 									@PathVariable(value="testId")BigInteger testId)
 	{
-		return testservice.assignTest(studentId,testId);
+		return studentservice.assignTest(studentId,testId);
 	}
 }

@@ -1,20 +1,12 @@
 package org.com.onlinetest.controller;
 
-import java.math.BigDecimal;
+
 import java.math.BigInteger;
 import java.util.List;
-import java.util.Set;
 
-import org.com.onlinetest.dao.TestDao;
 import org.com.onlinetest.exception.RecordNotFoundException;
-import org.com.onlinetest.model.Question;
-import org.com.onlinetest.model.Student;
 import org.com.onlinetest.model.Admin;
-import org.com.onlinetest.model.Assessment;
 import org.com.onlinetest.service.AdminService;
-import org.com.onlinetest.service.QuestionService;
-import org.com.onlinetest.service.StudentService;
-import org.com.onlinetest.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -43,9 +35,7 @@ public class AdminController {
 		return adminService.addAdmin(admin);
 
 	}
-
-	 
-	 
+ 
 	// update admin
 		@PutMapping("/updateAdmin/{id}")
 		public String updateAdmin(@PathVariable(value = "id") BigInteger adminId, @RequestBody Admin adminDetails)

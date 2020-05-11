@@ -1,4 +1,4 @@
-package org.com.onlinetest.model;
+package org.com;
 
 
 import java.math.BigDecimal;
@@ -16,6 +16,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
+import org.com.onlinetest.model.Question;
+import org.com.onlinetest.model.Student;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -27,8 +30,7 @@ public class Assessment {
 	private LocalTime testDuration;
 	
 	@OneToMany(targetEntity=Question.class,cascade = CascadeType.ALL,fetch = FetchType.LAZY, mappedBy="test")
-    //@JoinColumn(name ="testId",referencedColumnName="testId")
-	
+    
 	@JsonManagedReference
 	private Set<Question> testQuestions;
 	private BigDecimal testTotalMarks;

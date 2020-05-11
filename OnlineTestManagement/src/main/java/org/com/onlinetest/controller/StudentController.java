@@ -3,14 +3,10 @@ package org.com.onlinetest.controller;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
-import java.util.Set;
 
-import org.com.onlinetest.dao.TestDao;
 import org.com.onlinetest.exception.RecordNotFoundException;
-import org.com.onlinetest.model.Question;
 import org.com.onlinetest.model.Student;
 import org.com.onlinetest.model.Assessment;
-import org.com.onlinetest.service.QuestionService;
 import org.com.onlinetest.service.StudentService;
 import org.com.onlinetest.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +31,7 @@ public class StudentController {
 	@Autowired
 	private TestService testservice;
 
+	
 	// add new student
 	@PostMapping("/addStudent")
 	public Student addStudent(@RequestBody Student std) {
@@ -83,6 +80,7 @@ public class StudentController {
 		}
 		return null;
 	}
+	
 	//login
 	@GetMapping("/login/{loginName}/{password}")
 	public BigInteger validStudentLogin(@PathVariable("loginName") String loginName,@PathVariable("password") String password) {
