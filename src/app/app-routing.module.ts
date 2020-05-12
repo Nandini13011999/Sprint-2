@@ -15,6 +15,7 @@ import { UpdateTestComponent } from './update-test/update-test.component';
 import { TestDetailsComponent } from './test-details/test-details.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ListUserComponent } from './list-user/list-user.component';
+import { TestComponent } from './test/test.component';
 
 
 
@@ -40,6 +41,9 @@ const routes: Routes = [
 },
 {
   path:'signup',component:SignUpComponent
+},
+{
+  path:'test',component:TestComponent
 },
 {
   path:'listUser',component:ListUserComponent

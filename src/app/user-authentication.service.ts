@@ -22,11 +22,11 @@ export class UserAuthenticationService {
     return this.http.get(`${this.baseUrl1}/${name}/${pass}`)
     
   }
-  userLogin()
+  userLogin():String
   {
     let id=sessionStorage.getItem('id');
     console.log(!(id==null))
-return !(id==null);
+return id;
   }
 
   

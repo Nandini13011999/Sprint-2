@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
 
 export class UserService {
 
-  private baseUrl="http://localhost:7070/Student/addStudent";
+  private baseUrl="http://localhost:9090/Student/addStudent";
   
   constructor(private http:HttpClient) { }
 

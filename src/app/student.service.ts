@@ -11,6 +11,7 @@ export class StudentService {
 
   constructor(private http: HttpClient) { }
   baseUrl: string = 'http://localhost:9090/Student';
+  baseUrl1: string = 'http://localhost:9090/Student/getTestByStudentId/:id';
 
   getStudent(){
      return this.http.get<Student[]>(this.baseUrl + '/' + 'AllStudents');
@@ -32,5 +33,9 @@ export class StudentService {
     return this.http.put(url, std,{headers :httpHeaders});
   }
 
+  getTestByStudentId(id:Number):Observable<any>{
+    return this.http.get(`${this.baseUrl1}`);
+
+  }
   
 }

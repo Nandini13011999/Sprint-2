@@ -26,6 +26,8 @@ import { UpdateTestComponent } from './update-test/update-test.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ListUserComponent } from './list-user/list-user.component';
 import { UpdateComponent } from './update/update.component';
+import { TestComponent } from './test/test.component';
+import { TaketestComponent } from './taketest/taketest.component';
 
 
 
@@ -50,6 +52,8 @@ import { UpdateComponent } from './update/update.component';
     SignUpComponent,
     ListUserComponent,
     UpdateComponent,
+    TestComponent,
+    TaketestComponent,
 
     
 

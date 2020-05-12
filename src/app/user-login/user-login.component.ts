@@ -41,6 +41,9 @@ export class UserLoginComponent implements OnInit {
     
       console.log(data)
       this.id1=data;
+      {
+
+      }
 
     },
     error=>{
@@ -63,6 +66,8 @@ export class UserLoginComponent implements OnInit {
     }
     }
 
-  
+  getId(){
+return this.id1;
+  }
 
 }
