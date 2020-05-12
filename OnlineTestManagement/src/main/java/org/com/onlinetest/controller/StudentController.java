@@ -3,10 +3,13 @@ package org.com.onlinetest.controller;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Optional;
 
 import org.com.onlinetest.exception.RecordNotFoundException;
-import org.com.onlinetest.model.Student;
 import org.com.onlinetest.model.Assessment;
+import org.com.onlinetest.model.Question;
+import org.com.onlinetest.model.Student;
+import org.com.onlinetest.service.QuestionService;
 import org.com.onlinetest.service.StudentService;
 import org.com.onlinetest.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +33,8 @@ public class StudentController {
 	private StudentService stdService;
 	@Autowired
 	private TestService testservice;
-
+	@Autowired
+	private QuestionService questionservice;
 	
 	// add new student
 	@PostMapping("/addStudent")
@@ -88,4 +92,27 @@ public class StudentController {
 	}
 
 	
-}
+	 //getTestIdByStudentId
+	@GetMapping("/getTestByStudentId/{id}")
+	public ResponseEntity<Question[]> getTestIdByStudentId(@PathVariable("id") BigInteger studentId)
+			throws RecordNotFoundException {
+
+		BigInteger tid= stdService.getTestByStudentId(studentId);
+		 return questionservice.getQuestionById(tid);
+		
+		
+	}
+	
+	
+	//getTest
+	@GetMapping("/getTest")
+		public ResponseEntity<Question[]> getQuestionsById(@PathVariable(value = "id") BigInteger testId)
+				throws RecordNotFoundException {
+
+			return questionservice.getQuestionById(testId);
+		}
+
+	}
+
+		
+

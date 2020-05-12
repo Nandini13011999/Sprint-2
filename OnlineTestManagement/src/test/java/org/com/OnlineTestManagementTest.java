@@ -1,30 +1,29 @@
 package org.com;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalTime;
-
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
+@SpringBootTest
 public class OnlineTestManagementTest {
 
 	static Logger logger=LoggerFactory.getLogger(OnlineTestManagementTest.class);
 	
 	RestTemplate template;
 	
-	
 	@BeforeEach
 	public void setUp()
 	{
-		template=new RestTemplate();
-		
+		template=new RestTemplate();		
 	}
-	
 	
 	@Test
 	public void addTest()
@@ -72,12 +71,12 @@ public class OnlineTestManagementTest {
 		assessment.setTestId(BigInteger.valueOf(1002));
 		
 		template.delete("http://localhost:9090/test/deleteTest/1002", assessment);
-		logger.info("delete test works ");
+		logger.info("search product works ");
 	}
 
 	@Test
 	public void getTestById() {
-		Assessment assessment=new Assessment();
+		/*Assessment assessment=new Assessment();
 		assessment.setTestId(BigInteger.valueOf(1002));
 		
 		
@@ -86,7 +85,11 @@ public class OnlineTestManagementTest {
 	
 		Assertions.assertNotNull(test);
 				
-		logger.info("Find Test By Id works "+test1.getStatusCode());
+		logger.info("Find Test By Id works "+test1.getStatusCode());*/
+		
+		Assessment assessment=template.getForObject("http://localhost:9090/test/findTestById/41", Assessment.class);
+		Assertions.assertNotNull(assessment);
+		logger.info("!! Search Test By Id Works !!");
 	}
 	
 	@Test
@@ -99,73 +102,5 @@ public class OnlineTestManagementTest {
 		logger.info("Get All Test works "+ test1.getStatusCode());
 	}
 
-	
-	
-	@Test
-	public void addQuestion()
-	{
-		Question question = new Question();
-		question.setQuestionId(BigInteger.valueOf(1001));
-		
-		
-	
-		Question question1=template.postForObject("http://localhost:9090/test/addQuestion", 
-					question, Question.class);
-		Assertions.assertNotNull(question1);
-		logger.info("Add Question Working...");
-		
-	}
-	
-	@Test
-	public void updateQuestion()
-	{
-		
-		
-		Question question = new Question();
-		question.setQuestionId(BigInteger.valueOf(1001));
-		
-		
-	
-		Question question1=template.postForObject("http://localhost:9090/test/updateQuestion", 
-					question, Question.class);
-		Assertions.assertNotNull(question1);
-		logger.info("Add Question Working...");
-	
-	}
-	
-
-	@Test
-	public void deleteQuestion() {
-		Question question=new Question();
-		question.setQuestionId(BigInteger.valueOf(1101));
-		
-		template.delete("http://localhost:9090/test/deleteQuestion/1002", question);
-		logger.info("delete question works ");
-	}
-
-	@Test
-	public void getQuestionById() {
-		Question question=new Question();
-		
-		Assessment test = template.getForObject("http://localhost:9090/test/findTestById/1002", Assessment.class);
-		ResponseEntity<Assessment> test1 = template.getForEntity("http://localhost:9090/test/findTestById/1002", Assessment.class);
-	
-		Assertions.assertNotNull(test);
-				
-		logger.info("Find Question By Id works "+test1.getStatusCode());
-	}
-
-	
-	@Test
-	public void getAllQuestions() {
-		Question question = template.getForObject("http://localhost:9090/test/AllQuestions", Question.class);
-		ResponseEntity<Question> ques1 = template.getForEntity("http://localhost:9090/test/AllQuestions", Question.class);
-	
-		Assertions.assertNotNull(question);
-				
-		logger.info("Get All Questions works "+ ques1.getStatusCode());
-	}
-
-	
 
 	}

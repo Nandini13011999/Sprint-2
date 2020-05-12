@@ -1,6 +1,5 @@
 package org.com.onlinetest.model;
 
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalTime;
@@ -27,8 +26,7 @@ public class Assessment {
 	private LocalTime testDuration;
 	
 	@OneToMany(targetEntity=Question.class,cascade = CascadeType.ALL,fetch = FetchType.LAZY, mappedBy="test")
-    //@JoinColumn(name ="testId",referencedColumnName="testId")
-	
+   
 	@JsonManagedReference
 	private Set<Question> testQuestions;
 	private BigDecimal testTotalMarks;
@@ -131,10 +129,7 @@ public class Assessment {
 				+ ", testQuestions=" + testQuestions + ", testTotalMarks=" + testTotalMarks + ", testMarksScored="
 				+ testMarksScored + ", startTime=" + startTime + ", endTime=" + endTime + ", studentId=" + studentId
 				+ ", currentQuestion=" + currentQuestion + "]";
-	}
-	
-	
-	
+	}	
 	
 }
 

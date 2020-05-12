@@ -9,12 +9,14 @@ import javax.validation.Valid;
 import org.com.onlinetest.dao.StudentDao;
 import org.com.onlinetest.dao.TestDao;
 import org.com.onlinetest.exception.RecordNotFoundException;
-import org.com.onlinetest.model.Student;
 import org.com.onlinetest.model.Assessment;
+import org.com.onlinetest.model.Question;
+import org.com.onlinetest.model.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
@@ -24,7 +26,6 @@ public class StudentService {
 	@Autowired
 	private TestDao testdao;
 	
-
 //add student
 	public Student addStudent(Student std)
 	   {
@@ -90,6 +91,15 @@ public class StudentService {
 		 else return null;
 	 }
 	 
+	 //getTestByStudentId
+		public BigInteger getTestByStudentId(BigInteger studentId)
+				throws RecordNotFoundException {
+
+			BigInteger id1= stdDao.getTestByStudentId(studentId);
+			return id1;
+		}
+
+	 
     //AssignTest
 	 public String assignTest(BigInteger studentId,BigInteger testId)
 		{
@@ -106,6 +116,5 @@ public class StudentService {
 			return "User or Test does not exist";
 			
 		}
-
-
+	
 }

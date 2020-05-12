@@ -7,7 +7,6 @@ import java.util.Optional;
 import org.com.onlinetest.dao.QuestionDao;
 import org.com.onlinetest.dao.TestDao;
 import org.com.onlinetest.exception.RecordNotFoundException;
-import org.com.onlinetest.model.Assessment;
 import org.com.onlinetest.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -62,12 +61,11 @@ public class QuestionService {
 
 	//get question By Id
 	public ResponseEntity<Question[]> getQuestionById( BigInteger testId) throws RecordNotFoundException {
-        Optional<?> findId=testdao.findById(testId);
+   Optional<?> findId=testdao.findById(testId);
+   
 		Question[] question=questiondao.findQuestionByTestId(testId);
     	return ResponseEntity.ok().body(question);
     }
-	
-
 
 	int marks = 0;
 
@@ -80,5 +78,7 @@ public class QuestionService {
 		return marks;
 
 	}
+
+	
 
 }
