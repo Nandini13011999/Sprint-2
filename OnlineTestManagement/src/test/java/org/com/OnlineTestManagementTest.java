@@ -102,5 +102,59 @@ public class OnlineTestManagementTest {
 		logger.info("Get All Test works "+ test1.getStatusCode());
 	}
 
+@Test
+	public void addQuestion()
+	{
+		Question question= new Question();
+		question.setQuestionId(BigInteger.valueOf(102));
+	
+		Question question1=template.postForObject("http://localhost:9090/test/addQuestion", 
+					question, Question.class);
+		Assertions.assertNotNull(question1);
+		logger.info("Add Question Working..."+question1);
+		
+	}
+	
+	@Test
+	public void updateQuestion()
+	{
+		Question question= new Question();
+		
+		question.setQuestionId(BigInteger.valueOf(102));
+		Question question1=template.postForObject("http://localhost:9090/test/updateQuestion/1001", 
+					question, Question.class);
+		Assertions.assertNotNull(question1);
+		logger.info("Update Question Working..."+question1);
+		
+	
+	}
+	
+
+	@Test
+	public void deleteQuestion() {
+		Question question =new Question();
+		question.setQuestionId(BigInteger.valueOf(102));
+		
+		template.delete("http://localhost:9090/test/deleteQuestion/102", question);
+		logger.info("search question  works ");
+	}
+
+	@Test
+	public void getQuestionById() {
+		Question question=template.getForObject("http://localhost:9090/test/findQuestionById/41", Question.class);
+		Assertions.assertNotNull(question);
+		logger.info("!! Search Question By Id Works !!");
+	}
+	
+	@Test
+	public void getAllQuestion() {
+		Question question = template.getForObject("http://localhost:9090/test/AllQuestions", Question.class);
+		ResponseEntity<Question> ques1 = template.getForEntity("http://localhost:9090/test/AllTQuestions", Question.class);
+	
+		Assertions.assertNotNull(ques1);
+				
+		logger.info("Get All Question works "+ ques1.getStatusCode());
+	}
+
 
 	}
