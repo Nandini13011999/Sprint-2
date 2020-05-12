@@ -13,6 +13,14 @@ export class UpdatequestionComponent implements OnInit {
 id:Number;
 ques:Question;
 ans:Answer;
+
+  submitted=false;
+
+  answer1:Answer=new Answer();
+  answer2:Answer=new Answer();
+  answer3:Answer=new Answer();
+  answer4:Answer=new Answer();
+  answer:Answer[]=[]
   constructor(private route:ActivatedRoute,private router:Router,private service:QuestionserviceService) { }
 
   ngOnInit(): void {
@@ -35,8 +43,20 @@ ans:Answer;
   }
 */
   updateQuestion(){
+
     console.log("after on submit update called")
     console.log("udate id "+this.id);
+    this.answer.push(this.answer1);
+    console.log(this.answer1 )
+    this.answer.push(this.answer2);
+    console.log(this.answer2 )
+    this.answer.push(this.answer3);
+    console.log(this.answer3 )
+    this.answer.push(this.answer4);
+    console.log(this.answer4 )
+    this.ques.questionOptions=this.answer;
+    console.log("going on "+JSON.stringify(this.ques.questionOptions[0]));
+
     this.service.updateQuestion(this.id,this.ques).subscribe(
       data=>
       {console.log("udate id "+this.id);

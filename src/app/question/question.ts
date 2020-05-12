@@ -5,18 +5,14 @@ export class Question{
 	questionTitle : String
 	questionAnswer : Number
 	questionMarks : Number
-	questionOptions:Answer[];
+	//questionOptions:Answer[]=new Answer[4];
+	//questionOptions=Array<Answer>();
+ questionOptions:Array<Answer>=[];
 	chosenAnswer : Number 
 	marksScored : Number
-	test:Assessment
 
 }
 export class Answer{
 	answerId:Number;
 	values:String;
-}
-export class Assessment
-{
-	testId:Number;
-	
 }

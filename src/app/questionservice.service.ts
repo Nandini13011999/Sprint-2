@@ -32,7 +32,8 @@ export class QuestionserviceService {
 
   saveQuestion(id:Number,question:Object):Observable<Object>{
    console.log('inside save question '+id)
-    return this.http.post(`${this.baseUrl}/${id}`,question);
+   console.log("ques "+JSON.stringify(question))
+    return this.http.post(`${this.baseUrl}/${id}`,question)
   }
 
 

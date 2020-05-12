@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class AuthenicationService {
 
   private baseUrl="http://localhost:9090/Admin/login/";
+ 
   constructor(private http:HttpClient,private router:Router) { }
 
   name:string;
@@ -18,14 +19,16 @@ export class AuthenicationService {
     return this.http.get(`${this.baseUrl}/${name}/${pass}`)
     
   }
+  
+
   login()
   {
     let id=sessionStorage.getItem('id');
-    console.log(!(id==null))
+    //console.log(!(id==null))
 return !(id==null);
-
-
   }
+
+  
   logout(){
     sessionStorage.removeItem('id');
   }

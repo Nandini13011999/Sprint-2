@@ -12,8 +12,8 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
 })
 export class QuestionComponent implements OnInit {
 ques1:Question;
- question:Observable<Question[]>;
-  answer:Answer[];
+ question:any;
+  answer:any;
   constructor(private service:QuestionserviceService,private router:Router) { }
   
   ngOnInit(): void {

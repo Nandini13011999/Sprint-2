@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+    <head>
+<script>
+    function sum(){
+        var time1 = document.getElementById('duration').value;
+        var time2 = document.getElementById('startTime').value;
+        
+        var hour=0;
+        var minute=0;
+        
+        var splitTime1= time1.split(':');
+        var splitTime2= time2.split(':');
+        
+        hour = parseInt(splitTime1[0])+parseInt(splitTime2[0]);
+        minute = parseInt(splitTime1[1])+parseInt(splitTime2[1]);
+        hour = hour + minute/60;
+        minute = minute%60;
+        
+        time3= hour+':'+minute+':'+second;
+        document.getElementById('endTime').value=time3
+    }
+</script>
+</head>
+<body>
+<div [hidden]="submitted" class="container" style="margin-top: 10px; margin-bottom:10px;width:40%;">
+
+    <div class="jumbotron">
+    
+        <div class="card">
+            <div class="card-header"><b>ADD TEST FORM</b></div>
+                <div class="card-body">
+                    <form #addForm="ngForm" (ngSubmit)="onSubmit()">
+                
+                    <div class="form-group">
+                        <label for="title" class="control-label"><b>Enter Test Title</b></label>
+                        
+                        <input type="text" 
+                        pattern="^[A-Za-z]+$" 
+                        required #titleControl="ngModel"
+                        class="form-control"
+                        [(ngModel)]="test.testTitle" 
+                        name="title" 
+                        placeholder="Title">
+                        
+                        <small class="text-danger" *ngIf="titleControl.errors?.required && titleControl.touched">
+                                Test Title is required. 
+                        </small>
+                        
+                        <small class="text-danger" *ngIf="titleControl.errors?.pattern && titleControl.touched">
+                                Test Title must be in characters. 
+                        </small>
+
+                    </div> 
+                
+                    <div class="form-group">
+                        <label for="duration" class="control-label"><b>Enter Test Duration</b></label>
+                        
+                        <input type="time" 
+                        pattern="^((0[0-2]):([0-5][0-9]))|((0[3]):(0[0])))$"
+                        id="duration"
+                        placeholder="HH:mm" 
+                        required #durationControl="ngModel"
+                        class="form-control" 
+                        [(ngModel)]="test.testDuration" 
+                        name="duration"
+                        ng-change="sum()" >
+                        
+                        <small class="text-danger" *ngIf="durationControl.errors?.required && durationControl.touched">
+                                Test Duration is required.
+                        </small>
+                            
+                        <small class="text-danger" *ngIf="durationControl.errors?.pattern && durationControl.touched">
+                            Test Duration should not be more than 3 hours. 
+                        </small>
+
+                    </div> 
+
+                    <div class="form-group"> 
+                    <label for="startTime" class="control-label"><b>Enter Test Start Time</b></label>
+                    
+                    <input type="time" 
+                    pattern="^(0[1-9]|1[0-2]):[0-5][0-9]$"
+                    placeholder="HH:mm" 
+                    id="startTime"
+                    required #startTimeControl="ngModel" 
+                    class="form-control" 
+                    [(ngModel)]="test.startTime" 
+                    name="startTime"
+                    ng-change="sum()" >
+
+                        <small class="text-danger" *ngIf="startTimeControl.errors?.required && startTimeControl.touched">
+                            Test Start Time is required.
+                        </small>
+                        
+                        <small class="text-danger" *ngIf="startTimeControl.errors?.pattern && startTimeControl.touched">
+                            Test Start Time should be in 12hrs format.  
+                        </small>
+
+                </div> 
+
+                <div class="form-group"> 
+                <label for="endTime" class="control-label"><b>Enter Test End Time</b></label>
+
+                <input type="time" 
+                id="endTime"
+                pattern="^(0[1-9]|1[0-2]):[0-5][0-9]$"
+                placeholder="HH:mm"  
+                required #endTimeControl="ngModel"
+                class="form-control" 
+                [(ngModel)]="test.endTime" 
+                name="endTime">
+
+                    <small class="text-danger" *ngIf="endTimeControl.errors?.required && endTimeControl.touched">
+                        Test End Time is required.
+                    </small>
+
+                    <small class="text-danger" *ngIf="endTimeControl.errors?.pattern && endTimeControl.touched">
+                        Test End Time should be in 12hrs format.  
+                    </small>
+
+                </div> 
+                
+                <button type="submit" class="btn btn-success" [disabled]="addForm.invalid"> ADD TEST</button>
+            </form>        
+                    
+            </div>
+        </div>
+    </div>
+</div>
+    
+    <div [hidden]= "!submitted">
+        <h4>Test added successfully</h4>
+    </div>
+    <br>
+</body>
+</html>

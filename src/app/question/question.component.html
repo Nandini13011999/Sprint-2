@@ -4,11 +4,12 @@
        
    <!---  <li><a routerLink="/addquestion">Add New Question Here!!</a></li>
 --> 
-     <li><a routerLink="/detail">Question by test Id</a></li>
+     <li style="text-align: center;padding-left: 450px;">Want to add or update questions?<a routerLink="/detail" style="text-align:center;font-size: 20px;color: teal;text-underline-position: below;text-decoration: underline;">click here</a></li>
 
     </ul>
 </nav>
-
+<br>
+<h2 style="color: brown;text-align: center;">DETAILS OF ALL QUESTIONS PRESENT IN APPLICATION</h2>
 <table>
     <thead>
 
@@ -16,13 +17,13 @@
         <td>Question Id</td>
         <td>Question Title</td>
        
-        <td>Question Options</td>
+        <td colspan="4" style="text-align: center;">Question Options</td>
         <td>Question Answer</td>
         <td>Question Marks</td>
         <!-- 
         <td>Answer Choosen</td> -->
-        <td>Marks Scored</td>
-        <td>Remove</td>
+     
+     
 
 </thead>
 <tbody>
@@ -32,32 +33,19 @@
         <td>{{q.questionId}}</td>
         <td>{{q.questionTitle}}</td>
 
-        <td>{{q.questionOptions | json}}
-
-       <!--   <p *ngFor="let a of answer ">
-                <li>{{a.answerId}}</li>
-                <li>{{a.values}}</li>
-
-            </p>
-             -->  
-        </td>
+          
+        <td colspan="1" *ngFor="let qu of q.questionOptions">
+              {{qu.value}}
+            </td>
+           
 
       <td> {{q.choice}} </td>
      <td>  {{q.questionMarks}}</td>
      <!-- 
      <td>{{q.chosenAnswer}}</td>-->
-   
-    <td>   {{q.marksScored}} </td>
+   <!-- 
 <td>
        <button (click)="deleteQuestion(q.questionId)">delete</button></td>
-
-
-    
-<!-- 
-    <td>
-        <button (click)="questionDetail(q.questionId)">Detail</button>
-        </td>
-
  -->
     </tr>
 

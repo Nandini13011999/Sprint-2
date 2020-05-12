@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
+import { AuthenicationService } from './authenication.service';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,5 @@ templateUrl: './app.component.html',
 export class AppComponent {
  title = 'testapp';
 
-  constructor(){}
+  constructor(public logService:AuthenicationService){}
 }

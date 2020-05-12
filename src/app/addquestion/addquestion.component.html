@@ -10,10 +10,34 @@
     </div>
  
     
-<div class="form-group">
+    <div class="form-group">
     <label for="name">Enter Question Title</label>
     <input class="form-control" id="name" required [(ngModel)]="ques.questionTitle" name="name">
+    </div>
+<!-- 
+<div class="form-group"  >
+    <label for="op1">Enter Question Option 1</label>
+    <input class="form-control" id="op1" required [(ngModel)]="ques.questionOptions" name="option">
 </div>
+-->
+<!--
+
+
+    <label for="op2">Enter Question Option 2</label>
+    <input class="form-control" id="op2" required [(ngModel)]="option.values" name="option">
+
+
+
+    <label for="op3">Enter Question Option 3</label>
+    <input class="form-control" id="op3" required [(ngModel)]="option.values" name="option">
+
+
+
+    <label for="op4">Enter Question Option 4</label>
+    <input class="form-control" id="op4" required [(ngModel)]="option.values" name="op4">
+
+</div>
+ -->
  <!--- 
 <div class="form-group">
     <label for="ansid">Enter Question Options</label>
@@ -52,14 +76,64 @@
 
 -->
 <div class="form-group">
-    <label for="ans">Enter Question Answer</label>
-    <input class="form-control" id="ans" required [(ngModel)]="ques.questionAnswer" name="ans">
+    <label for="num">Enter Question Answer</label>
+    <input class="form-control" id="num" required [(ngModel)]="ques.choice" name="num">
 </div>
 <div class="form-group">
     <label for="marks">Enter Question Marks</label>
     <input class="form-control" id="marks" required [(ngModel)]="ques.questionMarks" name="marks">
 </div>
 
+ 
+<table>
+<th>Enter Question Options</th>
+  <tr>  <div class="form-group">
+      <td>    <input type="text" value="answerId" ></td> 
+        <td>   <input type="text" value="values" > </td> <br>
+      <td>     <input type="number" class="form-control" id="answerId1" required [(ngModel)]="answer1.answerId" name="answer1.answerId"></td> 
+        <td>   <input type="text" class="form-control" id="answerValue1" required [(ngModel)]="answer1.values" name="answer1.values"></td> 
+
+        
+
+
+
+
+        </div></tr>
+        <tr>  <div class="form-group">
+            <td>    <input type="text" value="answerId" ></td> 
+              <td>   <input type="text" value="values" > </td> <br>
+            <td>     <input type="number" class="form-control" id="answerId2" required [(ngModel)]="answer2.answerId" name="answer2.answerId"></td> 
+              <td>   <input type="text" class="form-control" id="answerValue2" required [(ngModel)]="answer2.values" name="answer2.values"></td> 
+      
+              
+      
+      
+      
+      
+              </div></tr>
+              <tr>  <div class="form-group">
+                <td>    <input type="text" value="answerId" ></td> 
+                  <td>   <input type="text" value="values" > </td> <br>
+                <td>     <input type="number" class="form-control" id="answerId3" required [(ngModel)]="answer3.answerId" name="answer3.answerId"></td> 
+                  <td>   <input type="text" class="form-control" id="answerValue3" required [(ngModel)]="answer3.values" name="answer3.values"></td> 
+          
+                  
+          
+          
+          
+          
+                  </div></tr>
+
+
+                  <tr>  <div class="form-group">
+                    <td>    <input type="text" value="answerId" ></td> 
+                      <td>   <input type="text" value="values" > </td> <br>
+                    <td>     <input type="number" class="form-control" id="answerId4" required [(ngModel)]="answer4.answerId" name="answer4.answerId"></td> 
+                      <td>   <input type="text" class="form-control" id="answerValue4" required [(ngModel)]="answer4.values" name="answer4.values"></td> 
+      
+                      </div></tr>
+
+    </table>
 
     <button type="submit" class="btn btn-success" >submit</button>
 

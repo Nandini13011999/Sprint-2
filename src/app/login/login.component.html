@@ -1,36 +1,192 @@
-<form [formGroup]="angForm" novalidate>
-    <div class="form-group">
-        <div>
-            <img src="assets/images/img1.png" class="avatar">
-            <br>
-            <label for="name">Enter Name:</label><br>
-            <input class="form-control" type="text" formControlName="name"name="name" [(ngModel)]="name" required>
-    
-            <div *ngIf="angForm.controls['name'].invalid" class="alert alert-danger">
-                <div *ngIf="angForm.controls['name'].errors.required">
-                Name is required.
-              </div>
-            </div>
 
-            <label for="pass">Enter Password:</label><br>
-             <input class="form-control" type="password" formControlName="pass" name="pass" [(ngModel)]="pass" required>
-             <div *ngIf="angForm.controls['pass'].invalid" class="alert alert-danger">
-             <div *ngIf="angForm.controls['pass'].errors.required">
-                Password is required.
-              </div>
+<form [formGroup]= "loginForm" >
+    <img src="assets/images/img4.jpeg" class="avatar">
+
+     <h1 style="text-align: center ;">Admin Login Form</h1>
+
+        
+    <div class="form-group">
+        <label for="name" class="col-sm-4 control-label">Enter Name:</label>
+        <div class="col-sm-12">
+            <input type="text" id="name" formControlName="name" [(ngModel)]="name" pattern="^[a-zA-Z]+$"/>
+            <br><br>
+            <span *ngIf="loginForm.get('name').errors && (loginForm.get('name').touched || loginForm.get('name').dirty)">
+    
+            <span *ngIf="loginForm.get('name').errors.required" class="alert alert-danger">
+   
+                name required
+            </span>
+            <span *ngIf="loginForm.get('name').errors.minlength" class="alert alert-danger">
+            
+               name must be greater than 2 characters
+            </span>
+            <span *ngIf="loginForm.get('name').errors.pattern" class="alert alert-danger">
+             
+                name must CONTAIN characters ONLY
+             </span>
+    
+        </span>
+    
+</div>
+
+
+    </div>      
+          <!---
+          <div *ngIf="loginForm.controls['name'].errors.pattern">
+            Only alphabets are allowed.
+        </div>
+    -->
+
+
+
+    <div class="form-group"> 
+            <label for="pass"class="col-sm-6 control-label" style="margin-left: -20px;">Enter Password:</label><br>
+            <div class="col-sm-12">
+                <input type="password" id="pass" formControlName="pass" [(ngModel)]="pass" pattern="^[a-zA-Z]+$"/>
+                <br><br>
+                <span *ngIf="loginForm.get('pass').errors && (loginForm.get('pass').touched || loginForm.get('pass').dirty)">
+        
+                <span *ngIf="loginForm.get('pass').errors.required" class="alert alert-danger">
+       
+                    password required
+                </span>
+                <span *ngIf="loginForm.get('pass').errors.minlength" class="alert alert-danger">
+                
+                   password must be greater than 2 characters
+                </span>
+                
+        </span>
         </div>
     </div>
+        
 
-        <button (click)=checkLogin() class="btn btn-success">Login</button>
-     
-        <br><br>
-       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  
+            <input class="form-control" type="password" formControlName="pass" name="pass" [(ngModel)]="pass" required>
+            </div>
+            <br>
+            <div *ngIf="loginForm.controls['pass'].invalid" > 
+                <div *ngIf="loginForm.controls['pass'].errors.required  && loginForm.get('pass').errors && (loginForm.get('pass').touched || loginForm.get('pass').dirty)" class="alert alert-danger">
+                Password is required.
+                </div>
+                -->
+      
+
+
+
+
+        <button (click)=checkLogin() class="btn btn-success" [disabled]="loginForm.invalid" style="text-align: center;">Login</button>
+    <br>
+    <!---
+        <div>
+        <p style="text-align: center;font-size: 30px;" *ngIf="invalidLogin" class="alert alert-danger">
+            Acess Denied !!
+        </p>
     </div>
+       -->
+        <br><br>
+
     
     </form>
     
    
    
+   
+   
+   
+   
+   <!---    
+   
+   <form>
+<div class="container">
+    <div>
+        <img src="assets/images/img1.png" class="avatar">
+        <br>
+        <label for="name">Enter Name:</label><br>
+        <input type="text" name="name" [(ngModel)]="name" required #nameInput="ngModel">
+
+        <div class="help is-error" *ngIf="nameInput.invalid && nameInput.dirty">
+            Name is required and needs to be at least 3 characters long.
+          </div>
+
+        <br>
+        <br>
+        <br> 
+    
+        <label for="pass">Enter Password:</label><br>
+         <input type="password" name="pass" [(ngModel)]="pass" required #nameInput="ngModel">
+         <div *ngIf="pass."></div>
+    </div>
+
+    <br>
+<br>
+    <button (click)=checkLogin() class="btn btn-success">Login</button><br><br>
+</div>
+
+</form>
+
+  working
+<form [formGroup]= "loginForm"  >
+    <div class="form-group">
+
+        <div>
+            <img src="assets/images/img1.png" class="avatar">
+            <br>
+        </div>
+    </div>
+
+    <div class="form-group" [ngClass]="{'has-error':loginForm.errors}">
+            <label for="name" class="col-sm-4 control-label">Enter Name:</label>
+            <div class="col-sm-8">
+            <input class="form-control" type="text"  name="name" [(ngModel)]="name" pattern="[a-zA-Z]" required>
+            </div>
+    </div>
+
+
+
+         
+            <div *ngIf="loginForm.controls['name'].invalid" class="alert alert-danger">
+                <div *ngIf="loginForm.controls['name'].errors.required">
+                Name is required.
+              </div>
+              <div *ngIf="loginForm.controls['name'].errors.pattern">
+                Only alphabets are allowed.
+            </div>
+        </div>
+
+
+            <label for="pass">Enter Password:</label><br>
+             <input class="form-control" type="password" formControlName="pass" name="pass" [(ngModel)]="pass" required>
+             <div *ngIf="loginForm.controls['pass'].invalid" class="alert alert-danger">
+             <div *ngIf="loginForm.controls['pass'].errors.required">
+                Password is required.
+              </div>
+        </div>
+
+
+        <button (click)=checkLogin() class="btn btn-success">Login</button>
+     
+        <br><br>
+       
+
+    
+    </form>
+    
+   
+-->
    
    
    

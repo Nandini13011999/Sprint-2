@@ -18,8 +18,16 @@ import { QuestionComponent } from './question/question.component';
 import { AddquestionComponent } from './addquestion/addquestion.component';
 import { QuestiondetailsComponent } from './questiondetails/questiondetails.component';
 import { UpdatequestionComponent } from './updatequestion/updatequestion.component';
-import { CheckComponent } from './check/check.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { UserLoginComponent } from './user-login/user-login.component';
+import { CreateTestComponent } from './create-test/create-test.component';
+import { MytestComponent } from './mytest/mytest.component';
+import { TestDetailsComponent } from './test-details/test-details.component';
+import { UpdateTestComponent } from './update-test/update-test.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { ListUserComponent } from './list-user/list-user.component';
+import { UpdateComponent } from './update/update.component';
+
+
 
 @NgModule({
   declarations: [
@@ -34,9 +42,17 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     AddquestionComponent,
     QuestiondetailsComponent,
     UpdatequestionComponent,
-    CheckComponent,
-    AdminDashboardComponent,
-   
+    UserLoginComponent,
+    CreateTestComponent,
+    MytestComponent,
+    TestDetailsComponent,
+    UpdateTestComponent,
+    SignUpComponent,
+    ListUserComponent,
+    UpdateComponent,
+
+    
+
   ],
   imports: [
     BrowserModule,

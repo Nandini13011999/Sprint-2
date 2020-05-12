@@ -20,31 +20,37 @@ export class LoginComponent implements OnInit {
   invalidLogin=false;
 */
 name:string;
+
 pass:string;
 login:Login;
 id:any;
 invalidLogin=false;
-angForm: FormGroup;
+loginForm: FormGroup;
  
   constructor(private router:Router,private loginservice:AuthenicationService,private adminService:AdminserviceService,private route:ActivatedRoute,private fb: FormBuilder) { 
     this.createForm();
   }
 createForm(){
-  this.angForm = this.fb.group({
-    name: ['', Validators.required ],
-    pass:['',Validators.required]
+  this.loginForm = this.fb.group({
+    name:['',[Validators.required,Validators.minLength(2)]],
+   // name: ['', [Validators.required ,Validators.pattern('^[a-zA-Z]$')]],
+    pass:['',[Validators.required,Validators.minLength(2)]]
  });
 }
   
   ngOnInit(): void {
+   
+  // setTimeout(()=>{ this.createForm()},4000)
    this.name=this.route.snapshot.params['name'];
   this.pass=this.route.snapshot.params['pass'];
+//setTimeout(()=>{ this.checkLogin()},4000)
     this.checkLogin();
    
   }
   
   checkLogin(){
     this.loginservice.isAdminLoggedIn(this.name,this.pass).subscribe (data=>{
+    
       console.log(data)
       this.id=data;
 
@@ -53,12 +59,15 @@ createForm(){
       console.log(error)
     }
     );
-    if(this.id==null){
     
+    if(this.id==null){
+   // alert('ID NOT FOUND !!')
+
       this.invalidLogin=true;
       return false;
     }
     else{
+      //alert('LOGIN SUCCESSFULL !!')
     sessionStorage.setItem('id',this.id)
     this.invalidLogin=false;
    //this.loginservice.login(user)

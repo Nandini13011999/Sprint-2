@@ -8,7 +8,14 @@ import { QuestionComponent } from './question/question.component';
 import { QuestiondetailsComponent } from './questiondetails/questiondetails.component';
 import { UpdatequestionComponent } from './updatequestion/updatequestion.component';
 import { AddquestionComponent } from './addquestion/addquestion.component';
-import { CheckComponent } from './check/check.component';
+import { UserLoginComponent } from './user-login/user-login.component';
+import { MytestComponent } from './mytest/mytest.component';
+import { CreateTestComponent } from './create-test/create-test.component';
+import { UpdateTestComponent } from './update-test/update-test.component';
+import { TestDetailsComponent } from './test-details/test-details.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
+import { ListUserComponent } from './list-user/list-user.component';
+
 
 
 const routes: Routes = [
@@ -31,11 +38,21 @@ const routes: Routes = [
 {
   path:'logout',component:LogoutComponent
 },
-{path:'check/:id',component:CheckComponent},
+{
+  path:'signup',component:SignUpComponent
+},
+{
+  path:'listUser',component:ListUserComponent
+},
 {path:'addquestion/:id',component:AddquestionComponent},
 {path:'detail',component:QuestiondetailsComponent},
-   
-   {path:'update/:id',component:UpdatequestionComponent}
+  {path:'user-login',component:UserLoginComponent},
+   {path:'update/:id',component:UpdatequestionComponent},
+   {path:'',redirectTo:'test',pathMatch:'full'},
+   {path:'mytest',component:MytestComponent},
+   {path:'add',component:CreateTestComponent},
+   {path:'updateTest/:id',component:UpdateTestComponent},
+   {path:'detail/:id',component:TestDetailsComponent}
 
 ];
 
