@@ -1,0 +1,45 @@
+form{
+  padding: 20px;
+  background-color: cornsilk;
+  height: 250px;
+  width: 850px;
+  margin-left: 100px;
+  text-align: center;
+  padding-top: 20px;
+}
+  
+  tr:hover {
+    background-color: #dfd9d9;
+    color:tomato;
+  }
+  table{
+    
+    margin-left: 100px;
+    width: 80%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+  background-color:rgb(148, 151, 144);
+  border: 2px solid black;
+  box-shadow: 15px 10px 10px 15px cadetblue;
+
+   
+    }
+   
+    td{
+        background-color: whitesmoke;
+        padding: 20px ;
+        text-align: justify;
+    }
+
+    tr{
+        width: 500px;
+        padding: 10px;
+        border: 2px solid black;
+        text-align: justify;
+    }
+    #table-border-radius,th {
+        border:6px groove;
+        border-radius:10px;
+        padding:6px;
+
+      }

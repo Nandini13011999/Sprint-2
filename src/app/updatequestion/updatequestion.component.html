@@ -1,0 +1,159 @@
+<h3>UPDATE QUESTION FORM</h3>
+
+<div [hidden]="submitted" style="width: 400px;">
+
+<form (ngSubmit)="onSubmit()" style="margin-left: 50px;">
+   
+    <div class="form-group">
+        <label for="id">Enter question id</label>
+        <input class="form-control" id="id" required [(ngModel)]="ques.questionId" name="id">
+    </div>
+ 
+    
+    <div class="form-group">
+    <label for="name">Enter Question Title</label>
+    <input class="form-control" id="name" required [(ngModel)]="ques.questionTitle" name="name">
+    </div>
+    
+
+
+
+<button type="submit" class="btn btn-success" >submit</button>
+<table>
+<th>Enter Question Options</th>
+  <tr>  <div class="form-group">
+      <td>    <input type="text" value="answerId" ></td> 
+        <td>   <input type="text" value="values" > </td> <br>
+      <td>     <input type="number" class="form-control" id="answerId1" required [(ngModel)]="answer1.id" name="answer1.id"></td> 
+        <td>   <input type="text" class="form-control" id="answerValue1" required [(ngModel)]="answer1.value" name="answer1.value"></td> 
+
+        
+
+
+
+
+        </div></tr>
+        <tr>  <div class="form-group">
+            <td>    <input type="text" value="answerId" ></td> 
+              <td>   <input type="text" value="values" > </td> <br>
+            <td>     <input type="number" class="form-control" id="answerId2" required [(ngModel)]="answer2.id" name="answer2.id"></td> 
+              <td>   <input type="text" class="form-control" id="answerValue2" required [(ngModel)]="answer2.value" name="answer2.value"></td> 
+      
+              
+      
+      
+      
+      
+              </div></tr>
+              <tr>  <div class="form-group">
+                <td>    <input type="text" value="answerId" ></td> 
+                  <td>   <input type="text" value="values" > </td> <br>
+                <td>     <input type="number" class="form-control" id="answerId3" required [(ngModel)]="answer3.id" name="answer3.id"></td> 
+                  <td>   <input type="text" class="form-control" id="answerValue3" required [(ngModel)]="answer3.value" name="answer3.value"></td> 
+          
+                  
+          
+          
+          
+          
+                  </div></tr>
+
+
+                  <tr>  <div class="form-group">
+                    <td>    <input type="text" value="answerId" ></td> 
+                      <td>   <input type="text" value="values" > </td> <br>
+                   <td>     <input type="number" class="form-control" id="answerId4" required [(ngModel)]="answer4.id" name="answer4.id"></td> 
+                      <td>   <input type="text" class="form-control" id="answerValue4" required [(ngModel)]="answer4.value" name="answer4.value"></td> 
+      
+                      </div></tr>
+
+    </table>
+
+    <button type="submit" class="btn btn-success" >submit</button>
+
+    
+    
+    
+</form>
+
+
+
+
+
+
+
+
+<!--
+<h1>UPDATE QUESTION FORM</h1>
+
+<form (ngSubmit)="onSubmit()">
+   
+    <div class="form-group">
+        <label for="id">Enter question id</label>
+        <input class="form-control" id="id" required [(ngModel)]="ques.questionId" name="id">
+    </div>
+ 
+    
+<div class="form-group">
+    <label for="name">Enter Question Title</label>
+    <input class="form-control" id="name" required [(ngModel)]="ques.questionTitle" name="name">
+</div>
+
+
+
+
+<div class="form-group">
+    <label for="op">Enter Question Options</label>
+    <input class="form-control" id="op" required [(ngModel)]="ans.answerId" name="op">
+</div>
+
+
+
+
+    
+<div class="form-group">
+    <label for="op1">Enter Question Option 1</label>
+    <input class="form-control" id="op1" required [(ngModel)]="ques.questionOption1" name="op1">
+</div>
+
+<div class="form-group">
+    <label for="op2">Enter Question Option 2</label>
+    <input class="form-control" id="op2" required [(ngModel)]="ques.questionOption2" name="op2">
+</div>
+
+<div class="form-group">
+    <label for="op3">Enter Question Option 3</label>
+    <input class="form-control" id="op3" required [(ngModel)]="ques.questionOption3" name="op3">
+</div>
+
+
+<div class="form-group">
+    <label for="op4">Enter Question Option 4</label>
+    <input class="form-control" id="op4" required [(ngModel)]="ques.questionOption4" name="op4">
+</div>
+ -->
+<!--  
+<div class="form-group">
+    <label for="ans">Enter Question Answer</label>
+    <input class="form-control" id="ans" required [(ngModel)]="ques.questionAnswer" name="ans">
+</div>
+-->
+<!-- --
+<div class="form-group">
+    <label for="marks">Enter Question Marks</label>
+    <input class="form-control" id="marks" required [(ngModel)]="ques.questionMarks" name="marks">
+</div>
+
+
+    <button type="submit" class="btn btn-success" >submit</button>
+
+</form>
+
+
+
+ -->
+
+
+
+
+

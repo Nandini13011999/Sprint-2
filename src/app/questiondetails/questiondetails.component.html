@@ -1,0 +1,58 @@
+<br><br>
+<form #crudForm style="position: static;">
+    
+<label for="id" style="font-size: x-large;padding-top: 10px;padding-top: 20px;">Enter Test Id : </label>
+<input type="number" name="id" [(ngModel)]="id" style="margin-left: 10px;" required><br><br>
+
+
+
+<div>
+
+<button (click)="show()">Show Questions In Test</button>
+<button (click)="addquestion(id)" style="margin-left: 10px;">Add new question in test</button>
+</div>
+</form>
+
+  <table [hidden]="isVisible">
+    <thead>
+
+        <td>Question Id</td>
+        <td>Question Title</td>      
+        <td colspan="4" style="text-align: center;padding-top: 2px;">Question Options</td>
+        <td>Question Answer</td>
+        <td>Question Marks</td>
+        
+        <td>Remove</td>
+        <td>Update</td>
+
+</thead>
+<tbody>
+<tr *ngFor="let q of ques ">
+   
+        <td>{{q.questionId}}</td>
+        <td>{{q.questionTitle}}</td>
+        
+            <td *ngFor="let qu of q.questionOptions">
+                {{qu.value}}
+                            </td>
+  
+
+      <td> {{q.choice}} </td>
+     <td>  {{q.questionMarks}}</td>
+ 
+
+    <td>
+        <button (click)="deleteQuestion(q.questionId)">delete</button></td>
+ 
+    
+     <td>
+ 
+     <button (click)="updateQuestion(id)">Update</button>
+     </td>
+    
+    </tr>
+   
+    </tbody>
+    </table>
+   
+   

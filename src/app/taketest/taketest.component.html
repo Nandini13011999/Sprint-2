@@ -1,0 +1,23 @@
+<div class="card-body">
+  <form #questionTest="ngForm" novalidate>
+      <div *ngFor="let ques of allQuestions">
+        <div>{{ques.questionTitle}}</div>
+        <div class="form-group row">
+          <label class="col-md-3 col-form-label">Choose Correct Option</label>
+               <li  *ngFor="let ans of ques.questionOptions">
+                   <input  type="radio" name="{{ques.questionId}}"  [(ngModel)]="ques.selected">
+                   
+                    {{ans.value}}
+                </li>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12" style="justify-content: center;display: flex;">
+            
+            <button type="button" class="btn btn-primary" (click)="submitTest()">Submit</button>
+          </div>
+        </div>
+
+  </form>
+</div>

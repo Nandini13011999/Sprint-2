@@ -1,0 +1,23 @@
+form
+{
+    background-color: antiquewhite;
+}
+
+.class1
+{
+    background-color: #FF9999 !important;
+    border-style:dashed;
+}
+
+
+.class2
+{
+    border-style:dashed;
+    border-width: 3px;
+    border-color:black;
+}
+
+button
+{
+background-color: darkslategray;
+}
