@@ -17,6 +17,9 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { ListUserComponent } from './list-user/list-user.component';
 import { TestComponent } from './test/test.component';
 import { TaketestComponent } from './taketest/taketest.component';
+import { AssignTestComponent } from './assign-test/assign-test.component';
+import { QuestiondetailComponent } from './questiondetail/questiondetail.component';
+import { UpdateComponent } from './update/update.component';
 
 
 
@@ -55,12 +58,16 @@ const routes: Routes = [
 {path:'addquestion/:id',component:AddquestionComponent},
 {path:'detail',component:QuestiondetailsComponent},
   {path:'user-login',component:UserLoginComponent},
+  //{path:'',redirectTo:'ques',pathMatch:'full'},
+  {path:'detail/:id',component:QuestiondetailComponent},
    {path:'update/:id',component:UpdatequestionComponent},
+   {path:'updateStd/:id',component:UpdateComponent},
    {path:'',redirectTo:'test',pathMatch:'full'},
    {path:'mytest',component:MytestComponent},
    {path:'add',component:CreateTestComponent},
    {path:'updateTest/:id',component:UpdateTestComponent},
-   {path:'detail/:id',component:TestDetailsComponent}
+   {path:'detail/:id',component:TestDetailsComponent},
+   {path:'assign',component:AssignTestComponent}
 
 ];
 

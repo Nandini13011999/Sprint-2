@@ -2,6 +2,7 @@ package org.com.onlinetest.model;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.sql.Time;
 import java.time.LocalTime;
 import java.util.Set;
 
@@ -23,7 +24,7 @@ public class Assessment {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private BigInteger testId;
 	private String testTitle;
-	private LocalTime testDuration;
+	private Time testDuration;
 	
 	@OneToMany(targetEntity=Question.class,cascade = CascadeType.ALL,fetch = FetchType.LAZY, mappedBy="test")
    
@@ -31,8 +32,8 @@ public class Assessment {
 	private Set<Question> testQuestions;
 	private BigDecimal testTotalMarks;
 	private BigDecimal testMarksScored;
-	private LocalTime startTime;
-	private LocalTime endTime;
+	private Time startTime;
+	private Time endTime;
 	
 	@OneToOne
 	private Student studentId;
@@ -59,10 +60,10 @@ public class Assessment {
 	public void setTestTitle(String testTitle) {
 		this.testTitle = testTitle;
 	}
-	public LocalTime getTestDuration() {
+	public Time getTestDuration() {
 		return testDuration;
 	}
-	public void setTestDuration(LocalTime testDuration) {
+	public void setTestDuration(Time testDuration) {
 		this.testDuration = testDuration;
 	}
 	
@@ -91,25 +92,25 @@ public class Assessment {
 	public void setCurrentQuestion(int currentQuestion) {
 		this.currentQuestion = currentQuestion;
 	}
-	public LocalTime getStartTime() {
+	public Time getStartTime() {
 		return startTime;
 	}
-	public void setStartTime(LocalTime startTime) {
+	public void setStartTime(Time startTime) {
 		this.startTime = startTime;
 	}
-	public LocalTime getEndTime() {
+	public Time getEndTime() {
 		return endTime;
 	}
 	
-	public void setEndTime(LocalTime endTime) {
+	public void setEndTime(Time endTime) {
 		this.endTime = endTime;
 	}
 	
 	public Assessment() {
 		
 	}
-	public Assessment(BigInteger testId, String testTitle, LocalTime testDuration, Set<Question> testQuestions,
-			BigDecimal testTotalMarks, BigDecimal testMarksScored, LocalTime startTime, LocalTime endTime,
+	public Assessment(BigInteger testId, String testTitle, Time testDuration, Set<Question> testQuestions,
+			BigDecimal testTotalMarks, BigDecimal testMarksScored, Time startTime, Time endTime,
 			Student studentId, int currentQuestion) {
 		super();
 		this.testId = testId;

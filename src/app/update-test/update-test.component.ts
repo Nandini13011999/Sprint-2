@@ -19,7 +19,7 @@ export class UpdateTestComponent implements OnInit {
     this.id=this.route.snapshot.params['id'];
     this.service.searchtest(this.id).subscribe(
       data=>{
-        console.log(data);
+       
         this.test=data;
       },
       error=>console.log(error)
@@ -38,7 +38,6 @@ export class UpdateTestComponent implements OnInit {
 
   onSubmit(){
     
-    console.log("on submit called")
     this.updateTest()
   }
 

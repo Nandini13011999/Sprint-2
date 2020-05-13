@@ -104,13 +104,7 @@ public class StudentController {
 	}
 	
 	
-	//getTest
-	@GetMapping("/getTest")
-		public ResponseEntity<Question[]> getQuestionsById(@PathVariable(value = "id") BigInteger testId)
-				throws RecordNotFoundException {
-
-			return questionservice.getQuestionById(testId);
-		}
+	
 
 	}
 

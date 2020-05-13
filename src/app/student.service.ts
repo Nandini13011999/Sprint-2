@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 import { Student } from './list-user/Student';
+import { Question } from './question/question';
 
 @Injectable({
   providedIn: 'root'
@@ -33,9 +34,9 @@ export class StudentService {
     return this.http.put(url, std,{headers :httpHeaders});
   }
 
-  getTestByStudentId(id:Number):Observable<any>{
-    return this.http.get(`${this.baseUrl1}${id}`);
-
+  getTestByStudentId(studentid: number){
+    return this.http.get<Question[]>(this.baseUrl1+'/' + studentid);
   }
+
   
 }

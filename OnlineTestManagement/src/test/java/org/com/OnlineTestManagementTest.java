@@ -3,9 +3,10 @@ package org.com;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalTime;
-import org.junit.Test;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -97,7 +98,7 @@ public class OnlineTestManagementTest {
 		Assessment test = template.getForObject("http://localhost:9090/test/AllTest", Assessment.class);
 		ResponseEntity<Assessment> test1 = template.getForEntity("http://localhost:9090/test/AllTest", Assessment.class);
 	
-		Assertions.assertNotNull(test);
+		Assertions.assertNotNull(test1);
 				
 		logger.info("Get All Test works "+ test1.getStatusCode());
 	}

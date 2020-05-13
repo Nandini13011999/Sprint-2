@@ -17,7 +17,7 @@
         hour = hour + minute/60;
         minute = minute%60;
         
-        time3= hour+':'+minute+':'+second;
+        time3= hour+':'+minute;
         document.getElementById('endTime').value=time3
     }
 </script>
@@ -64,7 +64,7 @@
                         class="form-control" 
                         [(ngModel)]="test.testDuration" 
                         name="duration"
-                        ng-change="sum()" >
+                        onchange="sum()" >
                         
                         <small class="text-danger" *ngIf="durationControl.errors?.required && durationControl.touched">
                                 Test Duration is required.
@@ -87,7 +87,7 @@
                     class="form-control" 
                     [(ngModel)]="test.startTime" 
                     name="startTime"
-                    ng-change="sum()" >
+                    onchange="sum()" >
 
                         <small class="text-danger" *ngIf="startTimeControl.errors?.required && startTimeControl.touched">
                             Test Start Time is required.

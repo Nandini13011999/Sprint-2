@@ -2,84 +2,198 @@
 
 <div [hidden]="submitted" style="width: 400px;">
 
-<form (ngSubmit)="onSubmit()" style="margin-left: 50px;">
-   
+  <form (ngSubmit)="onSubmit()" style="margin-left: 50px;" #addForm="ngForm">
+
     <div class="form-group">
-        <label for="id">Enter question id</label>
-        <input class="form-control" id="id" required [(ngModel)]="ques.questionId" name="id">
+      <label for="id">Enter question id</label>
+      <input class="form-control" id="id" required [(ngModel)]="ques.questionId" name="id" pattern="^[0-9]+$" required
+        #idControl="ngModel">
+      <small class="text-danger" *ngIf="idControl.errors?.required && idControl.touched">
+        id is required.
+      </small>
+
+      <small class="text-danger" *ngIf="idControl.errors?.pattern && idControl.touched">
+        id must be in digits only.
+      </small>
     </div>
- 
-    
+
+
     <div class="form-group">
-    <label for="name">Enter Question Title</label>
-    <input class="form-control" id="name" required [(ngModel)]="ques.questionTitle" name="name">
+      <label for="name">Enter Question Title</label>
+      <input class="form-control" id="name" required [(ngModel)]="ques.questionTitle" name="name"
+        pattern="^[a-zA-z\s]+$" required #titleControl="ngModel">
+      <small class="text-danger" *ngIf="titleControl.errors?.required && titleControl.touched">
+        question is required.
+      </small>
+
+      <small class="text-danger" *ngIf="titleControl.errors?.pattern && titleControl.touched">
+        question must be in characters only.
+      </small>
     </div>
 
-<div class="form-group">
-    <label for="num">Enter Question Answer</label>
-    <input class="form-control" id="num" required [(ngModel)]="ques.choice" name="num">
-</div>
-<div class="form-group">
-    <label for="marks">Enter Question Marks</label>
-    <input class="form-control" id="marks" required [(ngModel)]="ques.questionMarks" name="marks">
-</div>
+    <div class="form-group">
+      <label for="num">Enter Question Answer</label>
+      <input class="form-control" id="num" required [(ngModel)]="ques.choice" name="num" pattern="^[1-4]+$" required
+        #answerControl="ngModel">
+      <small class="text-danger" *ngIf="answerControl.errors?.required && answerControl.touched">
+        question answer is required.
+      </small>
 
- 
-<table>
-<th>Enter Question Options</th>
-  <tr>  <div class="form-group">
-      <td>    <input type="text" value="answerId" ></td> 
-        <td>   <input type="text" value="values" > </td> <br>
-      <td>     <input type="number" class="form-control" id="answerId1" required [(ngModel)]="answer1.id" name="answer1.id"></td> 
-        <td>   <input type="text" class="form-control" id="answerValue1" required [(ngModel)]="answer1.value" name="answer1.value"></td> 
+      <small class="text-danger" *ngIf="answerControl.errors?.pattern && answerControl.touched">
+        plz fill from 1-4 according to correct answer
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="marks">Enter Question Marks</label>
+      <input class="form-control" id="marks" required [(ngModel)]="ques.questionMarks" name="marks" pattern="^[1-2]+$"
+        required #marksControl="ngModel">
+      <small class="text-danger" *ngIf="marksControl.errors?.required && marksControl.touched">
+        marks required.
+      </small>
 
-        </div></tr>
-        <tr>  <div class="form-group">
-            <td>    <input type="text" value="answerId" ></td> 
-              <td>   <input type="text" value="values" > </td> <br>
-            <td>     <input type="number" class="form-control" id="answerId2" required [(ngModel)]="answer2.id" name="answer2.id"></td> 
-              <td>   <input type="text" class="form-control" id="answerValue2" required [(ngModel)]="answer2.value" name="answer2.value"></td> 
-      
-              
-      
-      
-      
-      
-              </div></tr>
-              <tr>  <div class="form-group">
-                <td>    <input type="text" value="answerId" ></td> 
-                  <td>   <input type="text" value="values" > </td> <br>
-                <td>     <input type="number" class="form-control" id="answerId3" required [(ngModel)]="answer3.id" name="answer3.id"></td> 
-                  <td>   <input type="text" class="form-control" id="answerValue3" required [(ngModel)]="answer3.value" name="answer3.value"></td> 
-          
-                  
-          
-          
-          
-          
-                  </div></tr>
+      <small class="text-danger" *ngIf="marksControl.errors?.pattern && marksControl.touched">
+        marks must be in digits only and between 1 and 2.
+      </small>
+    </div>
 
 
-                  <tr>  <div class="form-group">
-                    <td>    <input type="text" value="answerId" ></td> 
-                      <td>   <input type="text" value="values" > </td> <br>
-                <td>     <input type="number" class="form-control" id="answerId4" required [(ngModel)]="answer4.id" name="answer4.id"></td> 
-                      <td>   <input type="text" class="form-control" id="answerValue4" required [(ngModel)]="answer4.value" name="answer4.value"></td> 
-      
-                      </div></tr>
+    <table>
+      <th>Enter Question Options</th>
+      <tr>
+        <div class="form-group">
+          <td> <input type="text" value="answerId"></td>
+          <td> <input type="text" value="values"> </td> <br>
+          <td> <input type="number" class="form-control" id="answerId1" required [(ngModel)]="answer1.id"
+              name="answer1.id" pattern="^[0-9]+$" required #ansIdControl="ngModel">
+            <small class="text-danger" *ngIf="ansIdControl.errors?.required && ansIdControl.touched">
+              id is required.
+            </small>
+
+            <small class="text-danger" *ngIf="ansIdControl.errors?.pattern && ansIdControl.touched">
+              id must be in digits only.
+            </small>
+
+          </td>
+          <td> <input type="text" class="form-control" id="answerValue1" required [(ngModel)]="answer1.value"
+              name="answer1.value" pattern="^[a-zA-z]+$" required #ansValueControl="ngModel">
+            <small class="text-danger" *ngIf="titleControl.errors?.required && ansIdControl.touched">
+              value required.
+            </small>
+
+            <small class="text-danger" *ngIf="ansIdControl.errors?.pattern && ansIdControl.touched">
+              answer must be in characters only.
+            </small>
+
+          </td>
+
+        </div>
+      </tr>
+      <tr>
+        <div class="form-group">
+          <td> <input type="number" class="form-control" id="answerId2" required [(ngModel)]="answer2.id"
+              name="answer2.id" pattern="^[0-9]+$" required #ansIdControl="ngModel">
+            <small class="text-danger" *ngIf="ansIdControl.errors?.required && ansIdControl.touched">
+              id is required.
+            </small>
+
+            <small class="text-danger" *ngIf="ansIdControl.errors?.pattern && ansIdControl.touched">
+              id must be in digits only.
+            </small>
+
+          </td>
+          <td> <input type="text" class="form-control" id="answerValue2" required [(ngModel)]="answer2.value"
+              name="answer2.value" pattern="^[a-zA-z]+$" required #ansValueControl="ngModel">
+            <small class="text-danger" *ngIf="titleControl.errors?.required && ansIdControl.touched">
+              value required.
+            </small>
+
+            <small class="text-danger" *ngIf="ansIdControl.errors?.pattern && ansIdControl.touched">
+              answer must be in characters only.
+            </small>
+
+          </td>
+
+
+
+
+
+
+        </div>
+      </tr>
+      <tr>
+        <div class="form-group">
+
+          <td> <input type="number" class="form-control" id="answerId3" required [(ngModel)]="answer3.id"
+              name="answer3.id" pattern="^[0-9]+$" required #ansIdControl="ngModel">
+            <small class="text-danger" *ngIf="ansIdControl.errors?.required && ansIdControl.touched">
+              id is required.
+            </small>
+
+            <small class="text-danger" *ngIf="ansIdControl.errors?.pattern && ansIdControl.touched">
+              id must be in digits only.
+            </small> </td>
+          <td> <input type="text" class="form-control" id="answerValue3" required [(ngModel)]="answer3.value"
+              name="answer3.value" pattern="^[a-zA-z]+$" required #ansValueControl="ngModel">
+            <small class="text-danger" *ngIf="titleControl.errors?.required && ansIdControl.touched">
+              value required.
+            </small>
+
+            <small class="text-danger" *ngIf="ansIdControl.errors?.pattern && ansIdControl.touched">
+              answer must be in characters only.
+            </small>
+
+
+
+
+          </td>
+
+
+
+
+
+
+        </div>
+      </tr>
+
+
+      <tr>
+        <div class="form-group">
+          <td> <input type="number" class="form-control" id="answerId4" required [(ngModel)]="answer4.id"
+              name="answer4.id" pattern="^[0-9]+$" required #ansIdControl="ngModel">
+            <small class="text-danger" *ngIf="ansIdControl.errors?.required && ansIdControl.touched">
+              id is required.
+            </small>
+
+            <small class="text-danger" *ngIf="ansIdControl.errors?.pattern && ansIdControl.touched">
+              id must be in digits only.
+            </small>
+
+          </td>
+          <td> <input type="text" class="form-control" id="answerValue4" required [(ngModel)]="answer4.value"
+              name="answer4.value" pattern="^[a-zA-z]+$" required #ansValueControl="ngModel">
+            <small class="text-danger" *ngIf="titleControl.errors?.required && ansIdControl.touched">
+              value required.
+            </small>
+
+            <small class="text-danger" *ngIf="ansIdControl.errors?.pattern && ansIdControl.touched">
+              answer must be in characters only.
+            </small>
+
+          </td>
+
+        </div>
+      </tr>
 
     </table>
 
-    <button type="submit" class="btn btn-success" >submit</button>
+    <button type="submit" class="btn btn-success" [disabled]="addForm.invalid">submit</button>
 
-</form>
+  </form>
 
 </div>
 <div [hidden]="!submitted">
-    <h4>question submitted succeffully</h4>
+  <h4>question submitted succeffully</h4>
 
 
 
 </div>
-<br>
-<button class="btn btn-success" (click)="newQuestion()" >add another question</button>

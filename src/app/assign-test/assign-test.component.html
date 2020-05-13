@@ -1,0 +1,46 @@
+<div class="jumbotron">
+    
+    <div class="card">
+        <div class="card-header"><b>ASSIGN TEST FORM</b></div>
+            <div class="card-body">
+                <form #assignForm="ngForm"(ngSubmit)="onSubmit()">
+
+                    <div class="form-group">
+                        <label for="title">Enter Test Id</label>
+                        
+                        <input class="form-control" 
+                        id="testId" 
+                        required #testIdControl= "ngModel" 
+                        [(ngModel)]="student.testId" 
+                        name="testId"
+                        placeholder="Test Id">
+
+                    <small class="text-danger" *ngIf="testIdControl.errors?.required && testIdControl.touched">
+                        Test Id is required. 
+                </small>
+                
+                    </div>
+                        
+                    <div class="form-group">
+                        <label for="duration">Enter Student Id</label>
+                        
+                        <input class="form-control" 
+                        id="studentId" 
+                        required #StudentIdControl="ngModel" 
+                        [(ngModel)]="student.studentId" 
+                        name="studentId"
+                        placeholder="Student Id">
+                        
+                    <small class="text-danger" *ngIf="StudentIdControl.errors?.required && StudentIdControl.touched">
+                        Student Id is required. 
+                    </small>
+                
+
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success" [disabled]="assignForm.invalid"> ASSIGN TEST</button>
+                </form>
+        </div>
+    </div>
+</div>
+

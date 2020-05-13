@@ -11,49 +11,40 @@ import { analyzeAndValidateNgModules } from '@angular/compiler';
   styleUrls: ['./question.component.css']
 })
 export class QuestionComponent implements OnInit {
-ques1:Question;
- question:any;
-  answer:any;
-  constructor(private service:QuestionserviceService,private router:Router) { }
-  
+  ques1: Question;
+  question: any;
+  answer: any;
+  constructor(private service: QuestionserviceService, private router: Router) { }
+
   ngOnInit(): void {
     this.reloadData();
   }
-  reloadData(){
-    this.question=this.service.getQuestionList();
-    /*
-this.ques1=new Question();
-this.question.subscribe(questionOptions=>{
-this.ques1=questionOptions.values();
-})
-*/
- //this.answer=this.ques1.questionOptions;
-   
+  reloadData() {
+    this.question = this.service.getQuestionList();
+
   }
 
-  deleteQuestion(id:number){
+  deleteQuestion(id: number) {
 
     this.service.removeQuestion(id).subscribe(
 
-      data=>{
+      data => {
         console.log(data);
         this.reloadData();
       },
-      error=>console.log(error)
-      
+      error => console.log(error)
+
     );
 
   }
 
-  questionDetail(id:number)
-  {
-    this.router.navigate(['detail',id]);
+  questionDetail(id: number) {
+    this.router.navigate(['detail', id]);
   }
 
 
-updateQuestion(id:number)
-{
-  this.router.navigate(['update',id]);
-}
+  updateQuestion(id: number) {
+    this.router.navigate(['update', id]);
+  }
 
 }

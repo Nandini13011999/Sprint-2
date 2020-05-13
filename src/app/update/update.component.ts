@@ -56,7 +56,7 @@ export class UpdateComponent implements OnInit {
           data=>console.log(data),  
           error=>console.log(error)
         );
-        this.router.navigate(['list-user']);
+        this.router.navigate(['listUser']);
 
         
         

@@ -36,9 +36,6 @@ updateTest(id:number)
 {
   this.router.navigate(['updateTest',id]);
 }
-//testDetail(id:number)
-//{
-//  this.router.navigate(['detail',id]);
-//}
+
 
 }

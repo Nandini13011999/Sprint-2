@@ -8,6 +8,13 @@
 		<version>2.2.6.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
+	
+	
+	
+	
+	
+	
+	
 	<groupId>org.com</groupId>
 	<artifactId>OnlineTestManagementSystem</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -16,9 +23,27 @@
 
 	<properties>
 		<java.version>1.8</java.version>
+				<spring-cloud.version>Hoxton.SR3</spring-cloud.version>
 	</properties>
 
 	<dependencies>
+
+<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+		</dependency>
+
+	  
+
+
+
+
+
+
 
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -115,6 +140,23 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
+	
+	
+	
+	
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
 
 	<build>
 		<plugins>

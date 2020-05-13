@@ -19,6 +19,7 @@ import javax.persistence.Transient;
 import org.com.onlinetest.model.Question;
 import org.com.onlinetest.model.Student;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -27,6 +28,7 @@ public class Assessment {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private BigInteger testId;
 	private String testTitle;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="HH:mm:ss")
 	private LocalTime testDuration;
 	
 	@OneToMany(targetEntity=Question.class,cascade = CascadeType.ALL,fetch = FetchType.LAZY, mappedBy="test")
@@ -35,7 +37,9 @@ public class Assessment {
 	private Set<Question> testQuestions;
 	private BigDecimal testTotalMarks;
 	private BigDecimal testMarksScored;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="HH:mm:ss")
 	private LocalTime startTime;
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="HH:mm:ss")
 	private LocalTime endTime;
 	
 	@OneToOne

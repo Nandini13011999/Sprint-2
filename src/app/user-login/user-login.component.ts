@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControlName, FormBuilder } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenicationService } from '../authenication.service';
 import { UserAuthenticationService } from '../user-authentication.service';
 
@@ -17,17 +17,19 @@ export class UserLoginComponent implements OnInit {
   id1:any
   invalidLogin=false;
   loginForm:FormGroup;
-  constructor(private route:ActivatedRoute,private loginservice:UserAuthenticationService,private fb:FormBuilder) { }
+  constructor(private route:ActivatedRoute,private loginservice:UserAuthenticationService,private fb:FormBuilder,private router:Router) { 
+    this.createForm();
+  }
 
   ngOnInit(): void {
 
-    this.createForm();
+    
     this.name=this.route.snapshot.params['name'];
     this.pass=this.route.snapshot.params['pass'];
   //setTimeout(()=>{ this.checkLogin()},4000)
-      this.checkLogin();
+     this.checkUserLogin();
   }
-  private createForm() {
+  createForm() {
     this.loginForm = this.fb.group({
      name: ['',[Validators.required,Validators.minLength(2)]],
      pass:['',[Validators.required,Validators.minLength(2)]]
@@ -35,7 +37,7 @@ export class UserLoginComponent implements OnInit {
     });
   }
 
-  checkLogin(){
+  checkUserLogin(){
     console.log("check login called")
     this.loginservice.isStudentLoggedIn(this.name,this.pass).subscribe (data=>{
     
@@ -50,18 +52,20 @@ export class UserLoginComponent implements OnInit {
     );
     
     if(this.id1==null){
-   // alert('ID NOT FOUND !!')
+   
 console.log("id null")
       this.invalidLogin=true;
       return false;
     }
     else{
-      //alert('LOGIN SUCCESSFULL !!')
+      alert('LOGIN SUCCESSFULL !!')
 
     sessionStorage.setItem('id',this.id1)
     console.log(sessionStorage.getItem)
+    this.router.navigate(['test/']);
     this.invalidLogin=false;
-   //this.loginservice.login(user)
+
+
     return true;
     }
     }

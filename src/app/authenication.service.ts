@@ -19,18 +19,18 @@ export class AuthenicationService {
     return this.http.get(`${this.baseUrl}/${name}/${pass}`)
     
   }
-  
-
+ 
   login()
   {
-    let id=sessionStorage.getItem('id');
+    
+    let id=sessionStorage.getItem('allow');
     //console.log(!(id==null))
 return !(id==null);
   }
 
   
   logout(){
-    sessionStorage.removeItem('id');
+    sessionStorage.removeItem('allow');
   }
   
   /*

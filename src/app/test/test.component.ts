@@ -15,7 +15,7 @@ export class TestComponent implements OnInit {
   studentid:Number;
   userid:any;
   constructor(private router: Router,private route:ActivatedRoute, private service: StudentService, private userService:UserAuthenticationService,
-    // private alert: MatDialog,
+   
      private formBuilder: FormBuilder) { }
 
   ngOnInit() {

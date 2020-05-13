@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { QuestionserviceService } from '../questionservice.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Question, Answer } from '../question/question';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-addquestion',
@@ -10,65 +10,53 @@ import { FormBuilder } from '@angular/forms';
   styleUrls: ['./addquestion.component.css']
 })
 export class AddquestionComponent implements OnInit {
-  ques:Question;
-  submitted=false;
-  id:Number;
-  answer1:Answer=new Answer();
-  answer2:Answer=new Answer();
-  answer3:Answer=new Answer();
-  answer4:Answer=new Answer();
-  answer:Answer[]=[]
-  constructor(private service:QuestionserviceService,private router:Router,private route:ActivatedRoute,private fb:FormBuilder) { }
+  ques: Question;
+  submitted = false;
+  id: Number;
+  answer1: Answer = new Answer();
+  answer2: Answer = new Answer();
+  answer3: Answer = new Answer();
+  answer4: Answer = new Answer();
+  answer: Answer[] = []
+
+  constructor(private service: QuestionserviceService, private router: Router, private route: ActivatedRoute, private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    this.ques=new Question();
-    this.id=this.route.snapshot.params['id'];
+    this.ques = new Question();
+    this.id = this.route.snapshot.params['id'];
   }
 
+  onSubmit() {
 
- newQuestion():void{
-    this.submitted=false;
-    this.ques=new Question();
-  //  this.ans=this.ques.questionOptions;
-  //  console.log(this.ans)
-  //  this.ans=new Answer();
-  //  this.id=this.route.snapshot.params['id'];
-    console.log("test id in new question is "+this.id);
+
+    this.submitted = true;
+    this.save();
   }
-onSubmit(){
-  //console.log('on submit called '+this.ques.questionOptions[0]);
-
-  this.submitted=true;
-  this.save();
-}
-  save(){
+  save() {
     console.log('save called')
-    console.log("id is "+this.id)
-   
-    this.answer.push(this.answer1);
-   // console.log(this.answer1 )
-    this.answer.push(this.answer2);
-    //console.log(this.answer2 )
-    this.answer.push(this.answer3);
-  //  console.log(this.answer3 )
-    this.answer.push(this.answer4);
-  //  console.log(this.answer4 )
-    this.ques.questionOptions=this.answer;
-  //  console.log("going on "+JSON.stringify(this.ques.questionOptions[0]));
+    console.log("id is " + this.id)
 
-    this.service.saveQuestion(this.id,this.ques).subscribe( data => {
-      console.log("data is ",data),
-      error=>console.log(error)
-    }      
-      );
-      this.ques= new Question();
-    //  this.ans=this.ques.questionOptions;
-    //  console.log(this.ques)
-     // console.log(this.ans)
-      //this.ans=new Answer();
-this.gotoList();
+    this.answer.push(this.answer1);
+
+    this.answer.push(this.answer2);
+
+    this.answer.push(this.answer3);
+
+    this.answer.push(this.answer4);
+
+    this.ques.questionOptions = this.answer;
+
+
+    this.service.saveQuestion(this.id, this.ques).subscribe(data => {
+      console.log("data is ", data),
+        error => console.log(error)
+    }
+    );
+    this.ques = new Question();
+
+    this.gotoList();
   }
-  gotoList(){
+  gotoList() {
     this.router.navigate(['/question']);
   }
 
